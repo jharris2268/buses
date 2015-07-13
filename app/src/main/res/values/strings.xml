@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Buses</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="reload_stopspecs">Reload stops</string>
+    <string name="updateButtonText">Update</string>
+    <string name="reload_buses">Refresh</string>
+</resources>

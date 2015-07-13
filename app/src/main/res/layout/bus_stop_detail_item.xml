@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bus_stop_detail_title"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="4dp"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/bus_stop_detail_indicator"
+            android:paddingLeft="4dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+
+            android:layout_alignParentRight="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bus_stop_detail_destination"
+            android:paddingLeft="4dp"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/bus_stop_detail_title"/>
+
+</RelativeLayout>
