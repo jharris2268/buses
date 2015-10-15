@@ -143,6 +143,10 @@ public class BusListFragment extends BusDetailsFragmentBase {
 
     }
 */
+    @Override
+    protected String getFragmentType() {
+        return "BusList";
+    }
     public static BusListFragment newInstance(int stopSpec) {
         Bundle args = new Bundle();
         args.putInt(ARG_ID, stopSpec);

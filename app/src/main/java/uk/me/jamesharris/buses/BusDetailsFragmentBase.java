@@ -43,6 +43,7 @@ public abstract class BusDetailsFragmentBase extends Fragment {
 
 
     protected abstract ArrayList<BusStop> fetchBuses() throws IOException;
+    protected abstract String getFragmentType();
 
     private class FetchItemsTask extends AsyncTask<Void,Void,ArrayList<BusStop>> {
 
@@ -142,6 +143,7 @@ public abstract class BusDetailsFragmentBase extends Fragment {
 
                     i.putExtra(BusDetailActivity.EXTRA_STOPCODE, bus.getStopId());
                     i.putExtra(BusDetailActivity.EXTRA_REGISTRATIONNUMBER, bus.getRegistrationNumber());
+                    i.putExtra(BusDetailActivity.EXTRA_PREVIOUSTYPE, getFragmentType());
                     startActivity(i);
                 } else if (obj instanceof BusStop) {
                     BusStop busStop = (BusStop) obj;

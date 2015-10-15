@@ -34,8 +34,10 @@ public class BusDetailFragment extends BusDetailsFragmentBase {
     private static final String ARG_STOP_CODE = "STOP_CODE";
     private static final String ARG_REGISTRATION_NUMBER= "REGISTRATION_NUMBER";
 
+
     private String mRegistrationNumber;
     private String mStopCode;
+
 
     @Override
     protected ArrayList<BusStop> fetchBuses() throws IOException {
@@ -59,10 +61,16 @@ public class BusDetailFragment extends BusDetailsFragmentBase {
 
     }
 
+    @Override
+    protected String getFragmentType() {
+        return "BusDetail";
+    }
+
     public static BusDetailFragment newInstance(String registrationNumber, String stopCode) {
         Bundle args = new Bundle();
         args.putString(ARG_STOP_CODE, stopCode);
         args.putString(ARG_REGISTRATION_NUMBER, registrationNumber);
+
         BusDetailFragment rf = new BusDetailFragment();
         rf.setArguments(args);
         rf.resetIfLeft = true;
