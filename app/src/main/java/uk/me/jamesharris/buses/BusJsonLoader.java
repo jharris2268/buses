@@ -7,12 +7,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by james on 02/05/15.
@@ -20,6 +17,7 @@ import java.util.Map;
 public class BusJsonLoader extends JsonLoader {
     private static final String TAG = "BusJsonLoader";
     private static final String Url = "http://countdown.api.tfl.gov.uk/interfaces/ura/instant_V1?";
+    //order of columns important
     private static final String[] Columns = new String[]{
             "StopPointName","StopID","Towards","Bearing","StopPointIndicator","Latitude","Longitude",
             "LineName","DirectionID","DestinationName","RegistrationNumber","EstimatedTime"
@@ -30,7 +28,7 @@ public class BusJsonLoader extends JsonLoader {
     }
 
     public static ArrayList<BusStop> loadBusesFromIterable(Iterable<String> lines) throws IOException {
-        //Map<String,BusStop> res = new HashMap<String,BusStop>();
+
         ArrayList<BusStop> res = new ArrayList<BusStop>();
         int i = 0;
         for (String line : lines) {
@@ -40,14 +38,12 @@ public class BusJsonLoader extends JsonLoader {
                     if (arr.length()!=Columns.length+1) {
                         throw new JSONException("too short");
                     }
-                    BusStop busStop =
-                    //if (!res.containsKey(arr.getString(2))) {
-                        /*res.put(arr.getString(2),*/ new BusStop(arr.getString(1), arr.getString(2), arr.getString(3),
+                    BusStop busStop = new BusStop(arr.getString(1), arr.getString(2), arr.getString(3),
                                 arr.getDouble(4),arr.getString(5),arr.getDouble(6), arr.getDouble(7));
-                    //}
+
                     ExpectedBus bus = new ExpectedBus(arr.getString(2),arr.getString(8),arr.getString(9),arr.getString(10),arr.getString(11),arr.getLong(12));
                     busStop.setExpectedBus(bus);
-                    //res.get(arr.getString(2)).addExpectedBus(bus);
+
                     res.add(busStop);
                 }
             } catch (JSONException e) {
@@ -56,7 +52,7 @@ public class BusJsonLoader extends JsonLoader {
             i++;
         }
         Log.i(TAG,new StringBuilder().append("Found ").append(res.size()).append("stops").toString());
-        //return new ArrayList<BusStop>(res.values());
+
         Collections.sort(res, new Comparator<BusStop>() {
             @Override
             public int compare(BusStop lhs, BusStop rhs) {

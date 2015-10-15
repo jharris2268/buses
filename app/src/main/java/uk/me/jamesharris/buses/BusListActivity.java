@@ -1,10 +1,7 @@
 package uk.me.jamesharris.buses;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.WindowManager;
-
-import java.util.ArrayList;
+import android.support.v4.app.Fragment;
 
 
 public class BusListActivity extends SingleFragmentActivity {

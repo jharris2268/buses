@@ -2,7 +2,6 @@ package uk.me.jamesharris.buses;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
 import android.text.TextUtils;
@@ -13,15 +12,13 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by james on 18/06/15.
  */
 public class BusManager {
     private static final String TAG = "BusManager";
-    public static final String ACTION_LOCATION =
-            "uk.me.jamesharris.buses.ACTION_LOCATION";
+
 
     private static final String PREFS_FILE = "stopspecs";
     private static final String PREFS_STOPSPECS = "BusManager.latestStopSpec";

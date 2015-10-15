@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.WindowManager;
 
-import java.util.ArrayList;
-
 /**
  * Created by james on 18/06/15.
  */

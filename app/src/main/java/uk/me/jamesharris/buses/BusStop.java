@@ -1,10 +1,6 @@
 package uk.me.jamesharris.buses;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
 /**
  * Created by james on 01/05/15.
  */
@@ -16,7 +12,7 @@ public class BusStop {
     String mTowards;
     String mStopPointIndicator;
     double mBearing,mLatitude,mLongitude;
-    //ArrayList<ExpectedBus> mExpectedBuses;
+
     ExpectedBus mExpectedBus;
 
     BusStop(String stopPointName,String spotId, String towards,

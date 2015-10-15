@@ -1,19 +1,12 @@
 package uk.me.jamesharris.buses;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
-import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import uk.me.jamesharris.buses.BusJsonLoader;
 
 /**
  * Created by james on 18/06/15.
