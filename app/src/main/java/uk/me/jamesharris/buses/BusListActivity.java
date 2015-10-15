@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 public class BusListActivity extends SingleFragmentActivity {
-
+    /*List of buses at one or more bus stops*/
     public static final String EXTRA_STOPSPEC =
             "uk.me.jamesharris.buses.stop_spec";
     public static final String EXTRA_STOPCODE =
@@ -16,9 +16,9 @@ public class BusListActivity extends SingleFragmentActivity {
 
     @Override
     public Fragment createFragment() {
-        //StopSpec stopSpec = getIntent().getParcelableExtra(EXTRA_STOPSPEC);
+
         int stopSpecPos = getIntent().getIntExtra(EXTRA_STOPSPEC,-1);
-        //if (stopSpec != null) {
+
         if (stopSpecPos >= 0) {
             return BusListFragment.newInstance(stopSpecPos);
         }
@@ -31,7 +31,7 @@ public class BusListActivity extends SingleFragmentActivity {
 
     @Override
     public void onCreate(Bundle sis) {
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         super.onCreate(sis);
     }
 }

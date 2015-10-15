@@ -56,12 +56,15 @@ public class BusManager {
     }
     public StopSpec getStopSpec(int i) {
         if (i==mStopSpecs.size()) {
+
             if (mLocationManager!=null) {
+                //returns last location to be found by the device: does NOT find a new one
                 Location locationGPS = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 if (locationGPS != null) {
                     return StopSpec.inCircle(locationGPS.getLatitude(), locationGPS.getLongitude(), 400.0);
                 }
             }
+            //Victoria bus station
             return StopSpec.inCircle(51.495958, -0.143929, 100.0);
         }
         return mStopSpecs.get(i);

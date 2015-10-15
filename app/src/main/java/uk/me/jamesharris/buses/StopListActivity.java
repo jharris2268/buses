@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created by james on 18/06/15.
  */
 public class StopListActivity extends SingleFragmentActivity {
-
+    /*First screen: list of known stop specs*/
     public static final String EXTRA_STOP_LIST =
             "uk.me.jamesharris.runtracker.runtracker.stop_list_spec";
 

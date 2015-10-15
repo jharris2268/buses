@@ -55,7 +55,6 @@ public class StopListFragment extends ListFragment /*implements LoaderManager.Lo
     }
 
     void setupAdapter() {
-        //getLoaderManager().initLoader(0, null, this);
         ListAdapter bl = new StopListAdapter();
         setListAdapter(bl);
     }
@@ -76,9 +75,8 @@ public class StopListFragment extends ListFragment /*implements LoaderManager.Lo
 
         @Override
         protected void onPostExecute(Void b) {
-            //mItems = items;
             setupAdapter();
-            //getLoaderManager().restartLoader(0, null, StopListFragment.this);
+
         }
     }
 
@@ -135,63 +133,7 @@ public class StopListFragment extends ListFragment /*implements LoaderManager.Lo
         }
     }
 
-    /*
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Log.i(TAG,"onCreateLoader");
-        return new StopSpecCursorLoader(getActivity());
-    }
 
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        StopSpecCursorAdapter adapter = new StopSpecCursorAdapter(
-                getActivity(), (StopSpecDatabaseHelper.StopSpecCursor) cursor);
-        setListAdapter(adapter);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        setListAdapter(null);
-    }
-
-    @TargetApi(11)
-    private static class StopSpecCursorAdapter extends CursorAdapter {
-        private StopSpecDatabaseHelper.StopSpecCursor mCursor;
-        public StopSpecCursorAdapter(Context context, StopSpecDatabaseHelper.StopSpecCursor cursor) {
-            super(context,cursor,0);
-            mCursor = cursor;
-            Log.i(TAG,"StopSpecCursorAdapter");
-        }
-
-        @Override
-        public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
-            LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            return li.inflate(android.R.layout.simple_list_item_1, viewGroup, false);
-        }
-
-        @Override
-        public void bindView(View view, Context context, Cursor cursor) {
-            Log.i(TAG,"StopSpecCursorAdapter::bindView");
-            StopSpec stop = mCursor.getStopSpec();
-            TextView startDateTextView = (TextView) view;
-            String cellText = stop.getDescription();
-            startDateTextView.setText(cellText);
-        }
-    }
-
-
-    private static class StopSpecCursorLoader extends SQLiteCursorLoader {
-        public StopSpecCursorLoader(Context context) {
-            super(context);
-        }
-
-        @Override
-        protected Cursor loadCursor() {
-            Log.i(TAG, "StopSpecCursorLoader::loadCursor()");
-            return BusManager.get(getContext()).queryStopSpecs();
-        }
-    }
-    */
 
 
 }

@@ -27,8 +27,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by james on 01/05/15.
  */
-public abstract class BusDetailsFragmentBase extends Fragment {
-    protected static String TAG = "BusListFragmentBase";
+public abstract class BusDetailFragmentBase extends Fragment {
+    protected static String TAG = "BusDetailFragmentBase";
 
 
     protected boolean resetIfLeft = false;
@@ -43,7 +43,7 @@ public abstract class BusDetailsFragmentBase extends Fragment {
 
 
     protected abstract ArrayList<BusStop> fetchBuses() throws IOException;
-    protected abstract String getFragmentType();
+    protected abstract String getFragmentTag();
 
     private class FetchItemsTask extends AsyncTask<Void,Void,ArrayList<BusStop>> {
 
@@ -124,7 +124,7 @@ public abstract class BusDetailsFragmentBase extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup viewGroup,
                              Bundle savedInstanceState) {
-        //View v = super.onCreateView(inflater,viewGroup,savedInstanceState);
+
         View v = inflater.inflate(R.layout.fragment_buses,viewGroup,false);
 
 
@@ -138,14 +138,22 @@ public abstract class BusDetailsFragmentBase extends Fragment {
                 if ((obj instanceof ExpectedBus)) {
 
                     ExpectedBus bus = (ExpectedBus) obj;
-                    Intent i = new Intent(getActivity(), BusDetailActivity.class);
-
+                    Intent i;
+                    /*pick other activity*/
+                    if (getFragmentTag().equals(BusListFragment.TAG)) {
+                        i = new Intent(getActivity(), BusDetailActivity.class);
+                    } else {
+                        i = new Intent(getActivity(), BusListActivity.class);
+                    }
 
                     i.putExtra(BusDetailActivity.EXTRA_STOPCODE, bus.getStopId());
                     i.putExtra(BusDetailActivity.EXTRA_REGISTRATIONNUMBER, bus.getRegistrationNumber());
-                    i.putExtra(BusDetailActivity.EXTRA_PREVIOUSTYPE, getFragmentType());
+
                     startActivity(i);
                 } else if (obj instanceof BusStop) {
+
+                    /*create location intent understood by maps app*/
+
                     BusStop busStop = (BusStop) obj;
                     StringBuilder sb = new StringBuilder();
                     sb.append("geo:").append(busStop.getLatitude());

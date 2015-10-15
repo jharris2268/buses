@@ -29,10 +29,10 @@ public class BusStop {
         mStopPointIndicator=stopPointIndicator;
         mLatitude = latitude;
         mLongitude = longitude;
-        //mExpectedBuses=new ArrayList<>();
+
     }
 
-    //public void addExpectedBus(ExpectedBus expectedBus) {
+
     public void setExpectedBus(ExpectedBus expectedBus) {
         mExpectedBus = expectedBus;
     }
@@ -63,63 +63,21 @@ public class BusStop {
         return mLongitude;
     }
 
-    //public ArrayList<ExpectedBus> getExpectedBuses() {
+
     public ExpectedBus getExpectedBus() {
         return mExpectedBus;
     }
-/*
-    public void sortExpectedBuses() {
-        Collections.sort(mExpectedBuses, new Comparator<ExpectedBus>() {
-            @Override
-            public int compare(ExpectedBus lhs, ExpectedBus rhs) {
-                return lhs.getEstimatedTime().compareTo(rhs.getEstimatedTime());
-            }
-        });
-    }
-*/
     public String toString() {
         StringBuilder sb= new StringBuilder().append("Stop ").append(mStopId)
                 .append(" [").append(mStopPointName).append(" @")
                 .append(mLatitude).append(", ").append(mLongitude)
                 .append("]: ");
-        /*sb.append("\n").append(mExpectedBuses.size()).append(" buses:");
-        for (int i=0; i < mExpectedBuses.size(); i++) {
-            sb.append("\n").append(i).append(mExpectedBuses.get(i).toString());
-        }*/
+
         sb.append(mExpectedBus);
         return sb.toString();
 
     }
 
-    public String titleString() {
-        StringBuilder sb =  new StringBuilder();
-        sb.append(mStopId).append(" ");
-        sb.append(mStopPointName);
-        if (!(mStopPointIndicator.equals("null")) ) {
-            sb.append(" [").append(mStopPointIndicator).append("]");
-        }
-        if (!(mTowards.equals("null")) ) {
-            sb.append(" to ").append(mTowards);
-        }
-        return sb.toString();
-    }
-
-    public String locationString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(mLatitude).append(", ").append(mLongitude).append(": ");
-        /*switch (mExpectedBuses.size()) {
-            case 0:
-                sb.append("no buses due");
-                break;
-            case 1:
-                sb.append("1 bus");
-                break;
-            default:
-                sb.append(mExpectedBuses.size()).append(" buses");
-                break;
-        }*/
-        return sb.toString();
-    }
 
 
 }
